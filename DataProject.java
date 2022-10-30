@@ -1,10 +1,12 @@
-public DataProject{
-    
+import java.util.*;
+import java.io.*;
+public class DataProject{
     public static void main(String[] args) throws FileNotFoundException {
         File f = new File("collegeAthleticsFinancing.csv");
         schoolTuitionComparedToAthletics(f);
     }
 
+    
     //determining if the tuition of a school has a relation to the amount of money the school puts into their athletics in 2014
     public static void schoolTuitionComparedToAthletics(File dataset) throws FileNotFoundException{
         Scanner sc = new Scanner(dataset);
@@ -48,18 +50,12 @@ public DataProject{
         //create AL to hold ratios
         ArrayList<Double> ratio = new ArrayList<>();
         //loop to loop through AL just created
-        for(int i=0; i<school.size(); i+=){
+        for(int i=0; i<school.size(); i++){
             //create a ratio of tuition compared to athletics funding (tuition/support x 100) - percent form
-            double schoolRatio = ratio(instateTuition.get(i), totalSupport.get(i));
-            ratio.add(ratio);
+            ratio.add((instateTuition.get(i)/totalSupport.get(i))*100);
         }
 
         System.out.println(school);
         System.out.println(ratio);
-    }
-
-    public double ratio(num1, num2){
-        double percent = num1/num2 x 100;
-        return percent;
     }
 }
