@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 public class DataProject{
     public static void main(String[] args) throws FileNotFoundException {
-        File f = new File("collegeAthleticsFinancing.csv");
+        File f = new File("collegeAthleticsFinancingbaby.csv");
         schoolTuitionComparedToAthletics(f);
     }
 
@@ -34,6 +34,8 @@ public class DataProject{
         int year = headerList.indexOf("year");
         //find index of school name
         int name = headerList.indexOf("chronname");
+        //find index of indirect admin support
+        int indirectAdminSupport = headerList.indexOf("indirect_facil_admin_support");
 
         //go through each line of the file (while there is still a line remaining)
         while(sc.hasNextLine()){
@@ -42,7 +44,7 @@ public class DataProject{
             //chech if current line is for the year 2014
             if(line.get(year).equals("2014")){
                 instateTuition.add(Double.parseDouble(line.get(instateT)));
-                totalSupport.add(Double.parseDouble(line.get(totalInstitutionalSupport) + line.get(totalGovSupport)));
+                totalSupport.add(Double.parseDouble(line.get(totalInstitutionalSupport)) + Double.parseDouble(line.get(totalGovSupport)) + Double.parseDouble(line.get(indirectAdminSupport)));
                 school.add(line.get(name));
             }
         }
@@ -52,7 +54,9 @@ public class DataProject{
         //loop to loop through AL just created
         for(int i=0; i<school.size(); i++){
             //create a ratio of tuition compared to athletics funding (tuition/support x 100) - percent form
-            ratio.add((instateTuition.get(i)/totalSupport.get(i))*100);
+            System.out.println(instateTuition.get(i));
+            System.out.println(totalSupport.get(i));
+            ratio.add((instateTuition.get(i)/totalSupport.get(i)));
         }
 
         System.out.println(school);
