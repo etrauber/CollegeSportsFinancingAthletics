@@ -16,5 +16,5 @@
 
 - Throughout this project, I faced a many minor setback, however I also faced on major setback. The biggest setback I faced was determining a way to take the data I generated for instate tuition and comparing it to the data of funding per school and determine a relationship. I was able to come up with both a list of the tuition of each school and a list of the funding of each school, however, with so many schools, I needed to find a way to generate a singular number, or at least fewer numbers to look at. In order to overcome this, I was able to use the correlation coefficient, which allowed me to determine that tuition and funding are # correlated. I was also able to use this to overcome this same problem that arose in my endowments in relation to funding issue. 
 
-## Conclusion/Results
-should be at same level on conclusion
+## Results and Conclusions
+- 
