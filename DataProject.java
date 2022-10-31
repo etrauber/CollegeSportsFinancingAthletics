@@ -50,22 +50,13 @@ public class DataProject{
                 school.add(line.get(name));
             }
         }
-        
-        // //create AL to hold ratios
-        // ArrayList<Double> ratio = new ArrayList<>();
-        // //loop to loop through AL just created
-        // for(int i=0; i<school.size(); i++){
-        //     //create a ratio of tuition compared to athletics funding (tuition/support x 100) - percent form
-        //     System.out.println(instateTuition.get(i));
-        //     System.out.println(totalSupport.get(i));
-        //     ratio.add((instateTuition.get(i)/totalSupport.get(i)));
-        // }
-        System.out.println("School: ");
-        System.out.println(school);
-        System.out.println("Instate Tuition: ");
-        System.out.println(instateTuition);
-        System.out.println("Total Financial Support: ");
-        System.out.println(totalSupport);
+        // System.out.println("School: ");
+        // System.out.println(school);
+        // System.out.println("Instate Tuition: ");
+        // System.out.println(instateTuition);
+        // System.out.println("Total Financial Support: ");
+        // System.out.println(totalSupport);
+        System.out.println(calcCorrelationCoeff(instateTuition, totalSupport));
     }
 
     public static void conferenceRelationToSupport(File dataset) throws FileNotFoundException {
@@ -165,20 +156,57 @@ public class DataProject{
                 school.add(line.get(name));
             }
         }
-        
-        // //create AL to hold ratios
-        // ArrayList<Double> ratio = new ArrayList<>();
-        // //loop to loop through AL just created
-        // for(int i=0; i<school.size(); i++){
-        //     //create a ratio of edowment compared to athletics funding (tuition/support x 100) - percent form
-        //     ratio.add((endowment.get(i)/totalSupport.get(i)));
-        // }
 
-        System.out.println("Schools: ");
-        System.out.println(school);
-        System.out.println("Endowments: ");
-        System.out.println(endowment);
-        System.out.println("Total Financial Support: ");
-        System.out.println(totalSupport);
+        // System.out.println("Schools: ");
+        // System.out.println(school);
+        // System.out.println("Endowments: ");
+        // System.out.println(endowment);
+        // System.out.println("Total Financial Support: ");
+        // System.out.println(totalSupport);
+        System.out.println(calcCorrelationCoeff(endowment, totalSupport));
+    }
+
+    public static double calcCorrelationCoeff(ArrayList<Double> x, ArrayList<Double> y){
+        //calculate mean of x
+        double meanX = mean(x);
+        //calculate mean of y
+        double meanY = mean(y);
+
+        ArrayList<Double> counter = new ArrayList<>();
+        //determine the standard deviation
+        for(int i=0; i<x.size(); i++){
+            counter.add((x.get(i)-meanX)*(y.get(i)-meanY));
+        }
+        //sum the counter array 
+        double totalNumerator = 0;
+        for(int i=0; i<counter.size(); i++){
+            totalNumerator += counter.get(i);
+        }
+
+        //determine x values for denominator
+        ArrayList<Double> xValues = new ArrayList<>();
+        ArrayList<Double> yValues = new ArrayList<>();
+        for(int i=0; i<x.size(); i++){
+            xValues.add(x.get(i)-meanX);
+            yValues.add(y.get(i)-meanY);
+        }
+        double totalX = 0;
+        double totalY = 0;
+        for(int i=0; i<xValues.size(); i++){
+            totalX = xValues.get(i);
+            totalY = yValues.get(i);
+        }
+
+        double denominator = Math.sqrt(Math.pow(totalX,2) + Math.pow(totalY,2));
+
+        return totalNumerator/denominator;
+    }
+
+    public static double mean(ArrayList<Double> list){
+        double total = 0;
+        for(int i=0; i<list.size(); i++){
+            total += list.get(i);
+        }
+        return total/list.size(); 
     }
 }
