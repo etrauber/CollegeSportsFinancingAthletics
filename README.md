@@ -1,4 +1,4 @@
-# Exploring Factors That Effect The Financing Of College Sports
+# Exploring Factors That Affect The Financing Of College Sports
  
 ## Introduction
 - To explore the question of what factors effect the financing of college sports, I decided to look into some key elements that is unique to every university, including tuition, athletic conferences, and endowments. This topic is particularly interesting to me as it combines my two of my main interests in life, which are athletics and statstics. I have played sports since I was young and as playing college sports has always been a dream of mine. As it is coming true next year, it is becoming more important to me to learn about athletics programs at univisities, especially state schools that don't appear to have as much money as smaller schools, yet somehow generate massive atheltic departments. 
