@@ -2,10 +2,11 @@ import java.util.*;
 import java.io.*;
 public class DataProject{
     public static void main(String[] args) throws FileNotFoundException {
-        File f = new File("collegeAthleticsFinancing.csv");
-        schoolTuitionComparedToAthletics(f);
-        conferenceRelationToSupport(f);
+        File f = new File("collegeAthleticsFinancingbaby.csv");
+        //schoolTuitionComparedToAthletics(f);
+        //conferenceRelationToSupport(f);
         schoolEndowmentsComparedToAthletics(f);
+        System.out.println(calcCorrelationCoeff(new ArrayList<Double>(Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0)), new ArrayList<Double>(Arrays.asList(5.0,4.0,3.0,2.0,1.0))));
     }
 
     
@@ -156,13 +157,6 @@ public class DataProject{
                 school.add(line.get(name));
             }
         }
-
-        // System.out.println("Schools: ");
-        // System.out.println(school);
-        // System.out.println("Endowments: ");
-        // System.out.println(endowment);
-        // System.out.println("Total Financial Support: ");
-        // System.out.println(totalSupport);
         System.out.println(calcCorrelationCoeff(endowment, totalSupport));
     }
 
@@ -184,20 +178,20 @@ public class DataProject{
         }
 
         //determine x values for denominator
-        ArrayList<Double> xValues = new ArrayList<>();
-        ArrayList<Double> yValues = new ArrayList<>();
+        ArrayList<Double> errorSquaresX = new ArrayList<>();
+        ArrayList<Double> errorSquaresY = new ArrayList<>();
         for(int i=0; i<x.size(); i++){
-            xValues.add(x.get(i)-meanX);
-            yValues.add(y.get(i)-meanY);
+            errorSquaresX.add(Math.pow((x.get(i)-meanX),2));
+            errorSquaresY.add(Math.pow((y.get(i)-meanY),2));
         }
         double totalX = 0;
         double totalY = 0;
-        for(int i=0; i<xValues.size(); i++){
-            totalX = xValues.get(i);
-            totalY = yValues.get(i);
+        for(int i=0; i<errorSquaresX.size(); i++){
+            totalX += errorSquaresX.get(i);
+            totalY += errorSquaresY.get(i);
         }
 
-        double denominator = Math.sqrt(Math.pow(totalX,2) + Math.pow(totalY,2));
+        double denominator = Math.sqrt(totalX*totalY);
 
         return totalNumerator/denominator;
     }
