@@ -166,33 +166,41 @@ public class DataProject{
         //calculate mean of y
         double meanY = mean(y);
 
+        //create counter arraylist to hold values of difference in x * difference in y
         ArrayList<Double> counter = new ArrayList<>();
-        //determine the standard deviation
         for(int i=0; i<x.size(); i++){
             counter.add((x.get(i)-meanX)*(y.get(i)-meanY));
         }
-        //sum the counter array 
+
+        //sum the counter array to find the value of the numerator
         double totalNumerator = 0;
         for(int i=0; i<counter.size(); i++){
             totalNumerator += counter.get(i);
         }
 
-        //determine x values for denominator
+        //create arraylist to find the error values between the Xs and error values between the Ys
         ArrayList<Double> errorSquaresX = new ArrayList<>();
         ArrayList<Double> errorSquaresY = new ArrayList<>();
+
+        //loop to find find the difference between each x-vaule and the meanX and square it - and same for y
         for(int i=0; i<x.size(); i++){
             errorSquaresX.add(Math.pow((x.get(i)-meanX),2));
             errorSquaresY.add(Math.pow((y.get(i)-meanY),2));
         }
+        //initalize variables to hold the total values in arraylist of errors in Xs and errors in Ys
         double totalX = 0;
         double totalY = 0;
+        //loop to add up all the values from each arraylist
         for(int i=0; i<errorSquaresX.size(); i++){
             totalX += errorSquaresX.get(i);
             totalY += errorSquaresY.get(i);
         }
 
+        //create variable to hold value of denominator 
+            //square root totalX multiplied by totalY
         double denominator = Math.sqrt(totalX*totalY);
-
+        
+        //return numerator/denominator
         return totalNumerator/denominator;
     }
 
