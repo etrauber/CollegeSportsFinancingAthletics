@@ -39,7 +39,7 @@ public class DataProject{
         while(sc.hasNextLine()){
             //split up the line (which is a string) in an AL of strings
             ArrayList<String> line = new ArrayList<>(Arrays.asList(sc.nextLine().split(",")));
-            //chech if current line is for the year 2014
+            //check if current line is for the year 2014
             if(line.get(year).equals("2014")){
                 //if true - add tuition of the each school to specific index of AL instateTuition and add total support to second AL
                 instateTuition.add(Double.parseDouble(line.get(instateT)));
@@ -50,7 +50,7 @@ public class DataProject{
         System.out.println(calcCorrelationCoeff(instateTuition, totalSupport));
     }
 
-    //determining if conferences will have higher average supports if the schools that are a part of them have higher rankings/more well-known in 2014
+    //determining if conferences will have a higher average support if the schools that are a part of them have higher rankings/more well-known in 2014
     public static void conferenceRelationToSupport(File dataset) throws FileNotFoundException {
          Scanner sc = new Scanner(dataset);
 
@@ -59,7 +59,7 @@ public class DataProject{
         String[] header = sc.nextLine().split(",");
         ArrayList<String> headerList = new ArrayList<>(Arrays.asList(header));
 
-        //initalize an AL of AL of doubles storing the Athletics Financing of each school for each conference
+        //initalize an AL of AL of doubles storing the financing of athletics of each school for each conference
             //would be direct institution support + government support + indirect admin support
         ArrayList<ArrayList<Double>> totalSupport = new ArrayList<>();
         //initalize an AL of conference corresponding to the AL of AL of financing
